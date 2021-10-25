@@ -1,8 +1,10 @@
 .env
-
-#Buidler files
-cache
-artifacts
+cache/
+artifacts/
+typechain/
+node_modules/
+dist/
+build/
 
 node_modules
 dist/

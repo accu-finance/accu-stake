@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.7.5;
 
-import {ERC20} from '../lib/ERC20.sol';
+import {ERC20} from '../open-zeppelin/ERC20.sol';
 import {ITransferHook} from '../interfaces/ITransferHook.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
+import {SafeMath} from '../open-zeppelin/SafeMath.sol';
 
 /**
  * @title ERC20WithSnapshot
@@ -30,9 +30,8 @@ contract ERC20WithSnapshot is ERC20 {
 
   constructor(
     string memory name,
-    string memory symbol,
-    uint8 decimals
-  ) public ERC20(name, symbol, decimals) {}
+    string memory symbol
+  ) public ERC20(name, symbol) {}
 
   function _setAaveGovernance(ITransferHook aaveGovernance) internal virtual {
     _aaveGovernance = aaveGovernance;
