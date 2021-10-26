@@ -3,10 +3,10 @@ pragma solidity 0.7.5;
 
 import "../interfaces/IERC20.sol";
 
-contract DoubleTransferHelper {
+contract MockDoubleTransfer {
     IERC20 public immutable ACCU;
 
-    constructor(IERC20 accu) public {
+    constructor(IERC20 accu) {
         ACCU = accu;
     }
 

@@ -3,9 +3,9 @@ import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {
   AaveDistributionManager,
   AaveIncentivesController,
-  DoubleTransferHelper,
   InitializableAdminUpgradeabilityProxy,
   MockAToken,
+  MockDoubleTransfer,
   MockMintableERC20,
   StakedAccu,
 } from '../typechain';
@@ -148,17 +148,17 @@ export const deployDistributionManager = async (hre: HardhatRuntimeEnvironment):
   return await getContractAt(hre, contract, result.address);
 };
 
-export const deployDoubleTransferHelper = async (
+export const deployMockDoubleTransfer = async (
   hre: HardhatRuntimeEnvironment,
   token: Address
-): Promise<DoubleTransferHelper> => {
+): Promise<MockDoubleTransfer> => {
   const {
     deployments: {deploy},
     getNamedAccounts,
     network,
   } = hre;
   const {deployer} = await getNamedAccounts();
-  const contract = ContractId.DoubleTransferHelper;
+  const contract = ContractId.MockDoubleTransfer;
   const result = await deploy(contract, {
     from: deployer,
     contract,
