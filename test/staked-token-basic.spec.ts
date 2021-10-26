@@ -49,7 +49,7 @@ describe('StakedToken Basics', () => {
     await expect(user1.stakedAccu.cooldown()).to.be.revertedWith('INVALID_BALANCE_ON_COOLDOWN');
   });
 
-  it('User 1 stakes 50 AAVE: receives 50 SAAVE, StakedAave balance of AAVE is 50 and his rewards to claim are 0', async () => {
+  it('User 1 stakes 50 ACCU: receives 50 SACCU, StakedAave balance of ACCU is 50 and his rewards to claim are 0', async () => {
     const {accuToken, stakedAccu, user1, emissionManager} = fixture;
 
     const amount = utils.parseEther('50');
@@ -86,7 +86,7 @@ describe('StakedToken Basics', () => {
     expect(userTokenBalanceAfter).to.be.equal(userTokenBalanceBefore.sub(amount), 'user token balance');
   });
 
-  it('user1 stakes 20 AAVE more: his total SAAVE balance increases, StakedAave balance of Aave increases and his reward until now get accumulated', async () => {
+  it('user1 stakes 20 ACCU more: his total SACCU balance increases, StakedAave balance of Aave increases and his reward until now get accumulated', async () => {
     const {accuToken, stakedAccu, user1} = fixture;
 
     const amount = utils.parseEther('20');
@@ -162,7 +162,7 @@ describe('StakedToken Basics', () => {
     expect(userTokenBalanceAfter).to.be.eq(userTokenBalanceBefore.add(expectedAccruedRewards).add(totalRewards));
   });
 
-  it('user2 stakes 50 AAVE, with the rewards not enabled', async () => {
+  it('user2 stakes 50 ACCU, with the rewards not enabled', async () => {
     const {accuToken, stakedAccu, user2, emissionManager} = fixture;
 
     const amount = utils.parseEther('50');
@@ -201,7 +201,7 @@ describe('StakedToken Basics', () => {
     expect(userTokenBalanceAfter).to.be.equal(userTokenBalanceBefore.sub(amount), 'user token balance');
   });
 
-  it('User 6 stakes 30 AAVE more, with the rewards not enabled', async () => {
+  it('User 6 stakes 30 ACCU more, with the rewards not enabled', async () => {
     const {accuToken, stakedAccu, user2} = fixture;
 
     const amount = utils.parseEther('30');

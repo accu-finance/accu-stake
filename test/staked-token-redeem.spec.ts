@@ -34,7 +34,7 @@ describe('StakedToken Redeem', () => {
     await expect(user1.stakedAccu.redeem(user1.address, Zero)).to.be.revertedWith('INVALID_ZERO_AMOUNT');
   });
 
-  it('user1 stakes 50 AAVE', async () => {
+  it('user1 stakes 50 ACCU', async () => {
     const {stakedAccu, user1, emissionManager} = fixture;
 
     const amount = utils.parseEther('50');
