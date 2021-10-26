@@ -18,8 +18,6 @@ export const enumKeys = <O extends Record<string, unknown>, K extends keyof O = 
   return Object.keys(obj).filter((k) => Number.isNaN(+k)) as K[];
 };
 
-const getKeyValue = <T, K extends keyof T>(obj: T, key: K): T[K] => obj[key];
-
 export const parseNetwork = (networkName: string): {network: Network} => {
   const network: Network | undefined = Network[networkName as keyof typeof Network];
   if (!network) {

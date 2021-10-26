@@ -5,5 +5,5 @@ pragma experimental ABIEncoderV2;
 import {DistributionTypes} from "../lib/DistributionTypes.sol";
 
 interface IAaveDistributionManager {
-  function configureAssets(DistributionTypes.AssetConfigInput[] calldata assetsConfigInput) external;
+    function configureAssets(DistributionTypes.AssetConfigInput[] calldata assetsConfigInput) external;
 }

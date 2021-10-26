@@ -7,7 +7,6 @@ const isDeployResult = (arg: DeployResult | ContractDeployResult): arg is Deploy
 };
 
 const registerContractInJsonDb = async (
-  contractType: string,
   contractId: string,
   network: string,
   result: DeployResult | ContractDeployResult
@@ -26,19 +25,19 @@ const registerContractInJsonDb = async (
       console.log();
 
       return await getDb()
-        .set(`deployed.${contractType}.${contractId}.${network}`, {
+        .set(`deployed.${contractId}.${network}`, {
           address: result.address,
           deployer: result.receipt?.from,
         })
-        .set(`${contractType}.${contractId}.${network}`, result.address)
+        .set(`${contractId}.${network}`, result.address)
         .write();
     } else {
       return await getDb()
-        .set(`deployed.${contractType}.${contractId}.${network}`, {
+        .set(`deployed.${contractId}.${network}`, {
           address: result.address,
           deployer: result.deployer,
         })
-        .set(`${contractType}.${contractId}.${network}`, result.address)
+        .set(`${contractId}.${network}`, result.address)
         .write();
     }
   }

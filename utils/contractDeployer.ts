@@ -9,7 +9,7 @@ import {
   MockMintableERC20,
   StakedAccu,
 } from '../typechain';
-import {Address, ContractId, ContractType} from '../types';
+import {Address, ContractId} from '../types';
 import {getContractAt} from './contractGetter';
 import registerContractInJsonDb from './registerContractInJsonDb';
 
@@ -31,7 +31,7 @@ export const deployMockMintableERC20 = async (
     args: [name, symbol],
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.StakedAccu, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -53,7 +53,7 @@ export const deployStakedAccu = async (
     args,
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.StakedAccu, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -75,7 +75,7 @@ export const deployMockStakedAccuV2 = async (
     args,
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.StakedAccu, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -96,7 +96,7 @@ export const deployInitializableAdminUpgradeabilityProxy = async (
     contract,
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.Proxy, name, network.name, result);
+  await registerContractInJsonDb(name, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -125,7 +125,7 @@ export const deployIncentivesController = async (
     args,
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.IncentivesController, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -143,7 +143,7 @@ export const deployDistributionManager = async (hre: HardhatRuntimeEnvironment):
     contract,
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.StakedAccu, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -165,7 +165,7 @@ export const deployDoubleTransferHelper = async (
     args: [token],
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.Helper, contract, network.name, result);
+  await registerContractInJsonDb(contract, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
@@ -188,7 +188,7 @@ export const deployMockAToken = async (
     args: [incentivesController],
   });
   console.log(`${contract}:\t ${result.address}`);
-  await registerContractInJsonDb(ContractType.MockAToken, name, network.name, result);
+  await registerContractInJsonDb(name, network.name, result);
 
   return await getContractAt(hre, contract, result.address);
 };
