@@ -10,18 +10,13 @@ import {DistributionTypes} from "../lib/DistributionTypes.sol";
 import {SafeMath} from "../open-zeppelin/SafeMath.sol";
 import {SafeERC20} from "../open-zeppelin/SafeERC20.sol";
 import {VersionedInitializable} from "../utils/VersionedInitializable.sol";
-import {AaveDistributionManager} from "../stake/AaveDistributionManager.sol";
+import {DistributionManager} from "../stake/DistributionManager.sol";
 import {GovernancePowerWithSnapshot} from "../lib/GovernancePowerWithSnapshot.sol";
 
 /**
  * @title MockStakedAccuV2
  **/
-contract MockStakedAccuV2 is
-    IStakedToken,
-    GovernancePowerWithSnapshot,
-    VersionedInitializable,
-    AaveDistributionManager
-{
+contract MockStakedAccuV2 is IStakedToken, GovernancePowerWithSnapshot, VersionedInitializable, DistributionManager {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -78,7 +73,7 @@ contract MockStakedAccuV2 is
         address emissionManager,
         uint128 distributionDuration,
         address governance
-    ) public ERC20(NAME, SYMBOL) AaveDistributionManager(emissionManager, distributionDuration) {
+    ) public ERC20(NAME, SYMBOL) DistributionManager(emissionManager, distributionDuration) {
         STAKED_TOKEN = stakedToken;
         REWARD_TOKEN = rewardToken;
         COOLDOWN_SECONDS = cooldownSeconds;

@@ -4,14 +4,14 @@ pragma experimental ABIEncoderV2;
 
 import {SafeMath} from "../open-zeppelin/SafeMath.sol";
 import {DistributionTypes} from "../lib/DistributionTypes.sol";
-import {IAaveDistributionManager} from "../interfaces/IAaveDistributionManager.sol";
+import {IDistributionManager} from "../interfaces/IDistributionManager.sol";
 
 /**
- * @title AaveDistributionManager
+ * @title DistributionManager
  * @notice Accounting contract to manage multiple staking distributions
  * @author Aave
  **/
-contract AaveDistributionManager is IAaveDistributionManager {
+contract DistributionManager is IDistributionManager {
     using SafeMath for uint256;
 
     struct AssetData {
@@ -33,7 +33,7 @@ contract AaveDistributionManager is IAaveDistributionManager {
     event AssetIndexUpdated(address indexed asset, uint256 index);
     event UserIndexUpdated(address indexed user, address indexed asset, uint256 index);
 
-    constructor(address emissionManager, uint256 distributionDuration) public {
+    constructor(address emissionManager, uint256 distributionDuration) {
         DISTRIBUTION_END = block.timestamp.add(distributionDuration);
         EMISSION_MANAGER = emissionManager;
     }

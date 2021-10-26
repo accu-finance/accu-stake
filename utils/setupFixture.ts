@@ -2,7 +2,7 @@ import {Contract} from 'ethers';
 import {deployments, getNamedAccounts} from 'hardhat';
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {
-  AaveIncentivesController,
+  IncentivesController,
   InitializableAdminUpgradeabilityProxy,
   MockAToken,
   MockMintableERC20,
@@ -47,7 +47,7 @@ export const setupFixture = deployments.createFixture(async (hre: HardhatRuntime
     ContractId.IncentivesControllerProxy
   )) as InitializableAdminUpgradeabilityProxy;
 
-  const incentivesController = await getContractAt<AaveIncentivesController>(
+  const incentivesController = await getContractAt<IncentivesController>(
     hre,
     ContractId.IncentivesController,
     incentivesControllerProxy.address

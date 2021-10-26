@@ -1,7 +1,7 @@
 import {waffleChai} from '@ethereum-waffle/chai';
 import {expect, use} from 'chai';
 import {BigNumber, constants, ContractReceipt} from 'ethers';
-import {AaveDistributionManager, AaveIncentivesController, StakedAccu} from '../../typechain';
+import {DistributionManager, IncentivesController, StakedAccu} from '../../typechain';
 import {Address, User} from '../../types';
 import {advanceTimeAndBlock, getLatestBlockTimestamp} from '../../utils/hhNetwork';
 
@@ -49,7 +49,7 @@ export const getRewards = (
 };
 
 export const getUserIndex = async (
-  distributionManager: AaveDistributionManager | AaveIncentivesController | StakedAccu,
+  distributionManager: DistributionManager | IncentivesController | StakedAccu,
   user: Address,
   asset: string
 ): Promise<BigNumber> => {
@@ -57,14 +57,14 @@ export const getUserIndex = async (
 };
 
 export const getAssetData = async (
-  distributionManager: AaveDistributionManager | AaveIncentivesController | StakedAccu,
+  distributionManager: DistributionManager | IncentivesController | StakedAccu,
   underlyingAsset: Address
 ) => {
   return await distributionManager.assets(underlyingAsset);
 };
 
 export const doIncentiveAction = async (
-  incentivesController: AaveIncentivesController,
+  incentivesController: IncentivesController,
   underlyingAsset: Address,
   user: Address,
   stakedByUser: BigNumber,

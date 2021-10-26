@@ -1,7 +1,7 @@
 import {SignerWithAddress} from '@nomiclabs/hardhat-ethers/dist/src/signers';
 import {BigNumberish} from 'ethers';
 import {
-  AaveIncentivesController,
+  IncentivesController,
   InitializableAdminUpgradeabilityProxy,
   MockAToken,
   MockMintableERC20,
@@ -12,8 +12,8 @@ export enum ContractId {
   accuToken = 'accuToken',
   StakedAccu = 'StakedAccu',
   InitializableAdminUpgradeabilityProxy = 'InitializableAdminUpgradeabilityProxy',
-  DistributionManager = 'AaveDistributionManager',
-  IncentivesController = 'AaveIncentivesController',
+  DistributionManager = 'DistributionManager',
+  IncentivesController = 'IncentivesController',
   StakedAccuProxy = 'StakedAccuProxy',
   IncentivesControllerProxy = 'IncentivesControllerProxy',
   MockADAI = 'MockADAI',
@@ -70,7 +70,7 @@ export type ContractRecord = {
   accuToken: MockMintableERC20;
   stakedAccu: StakedAccu;
   stakedAccuProxy: InitializableAdminUpgradeabilityProxy;
-  incentivesController: AaveIncentivesController;
+  incentivesController: IncentivesController;
   incentivesControllerProxy: InitializableAdminUpgradeabilityProxy;
   mockADAI: MockAToken;
   mockAETH: MockAToken;

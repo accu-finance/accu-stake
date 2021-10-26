@@ -1,8 +1,8 @@
 import {BigNumberish} from 'ethers';
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {
-  AaveDistributionManager,
-  AaveIncentivesController,
+  DistributionManager,
+  IncentivesController,
   InitializableAdminUpgradeabilityProxy,
   MockAToken,
   MockDoubleTransfer,
@@ -111,7 +111,7 @@ export const deployIncentivesController = async (
     Address, // emissionManager,
     BigNumberish // distributionDuration
   ]
-): Promise<AaveIncentivesController> => {
+): Promise<IncentivesController> => {
   const {
     deployments: {deploy},
     getNamedAccounts,
@@ -130,7 +130,7 @@ export const deployIncentivesController = async (
   return await getContractAt(hre, contract, result.address);
 };
 
-export const deployDistributionManager = async (hre: HardhatRuntimeEnvironment): Promise<AaveDistributionManager> => {
+export const deployDistributionManager = async (hre: HardhatRuntimeEnvironment): Promise<DistributionManager> => {
   const {
     deployments: {deploy},
     getNamedAccounts,

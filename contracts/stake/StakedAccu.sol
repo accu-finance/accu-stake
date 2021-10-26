@@ -10,7 +10,7 @@ import {DistributionTypes} from "../lib/DistributionTypes.sol";
 import {SafeMath} from "../open-zeppelin/SafeMath.sol";
 import {SafeERC20} from "../open-zeppelin/SafeERC20.sol";
 import {VersionedInitializable} from "../utils/VersionedInitializable.sol";
-import {AaveDistributionManager} from "./AaveDistributionManager.sol";
+import {DistributionManager} from "./DistributionManager.sol";
 import {GovernancePowerWithSnapshot} from "../lib/GovernancePowerWithSnapshot.sol";
 
 /**
@@ -18,7 +18,7 @@ import {GovernancePowerWithSnapshot} from "../lib/GovernancePowerWithSnapshot.so
  * @notice Contract to stake Aave token, tokenize the position and get rewards, inheriting from a distribution manager contract
  * @author Aave
  **/
-contract StakedAccu is IStakedToken, GovernancePowerWithSnapshot, VersionedInitializable, AaveDistributionManager {
+contract StakedAccu is IStakedToken, GovernancePowerWithSnapshot, VersionedInitializable, DistributionManager {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -75,7 +75,7 @@ contract StakedAccu is IStakedToken, GovernancePowerWithSnapshot, VersionedIniti
         address emissionManager,
         uint128 distributionDuration,
         address governance
-    ) public ERC20(NAME, SYMBOL) AaveDistributionManager(emissionManager, distributionDuration) {
+    ) ERC20(NAME, SYMBOL) DistributionManager(emissionManager, distributionDuration) {
         STAKED_TOKEN = stakedToken;
         REWARD_TOKEN = rewardToken;
         COOLDOWN_SECONDS = cooldownSeconds;
