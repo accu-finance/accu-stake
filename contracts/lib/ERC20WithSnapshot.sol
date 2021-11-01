@@ -8,6 +8,7 @@ import {SafeMath} from "../open-zeppelin/SafeMath.sol";
 /**
  * @title ERC20WithSnapshot
  * @notice ERC20 including snapshots of balances on transfer-related actions
+ * @author Aave (modified by Accu)
  **/
 contract ERC20WithSnapshot is ERC20 {
     using SafeMath for uint256;

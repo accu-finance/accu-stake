@@ -7,6 +7,7 @@ import {IGovernancePowerDelegationToken} from "../../interfaces/IGovernancePower
 
 /**
  * @notice implementation of the ACCU token contract
+ * @author Aave
  */
 abstract contract GovernancePowerDelegationERC20 is ERC20, IGovernancePowerDelegationToken {
     using SafeMath for uint256;

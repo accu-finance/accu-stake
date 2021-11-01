@@ -9,6 +9,7 @@ import {GovernancePowerDelegationERC20} from "../token/base/GovernancePowerDeleg
 /**
  * @title ERC20WithSnapshot
  * @notice ERC20 including snapshots of balances on transfer-related actions
+ * @author Aave (modified by Accu)
  **/
 abstract contract GovernancePowerWithSnapshot is GovernancePowerDelegationERC20 {
     using SafeMath for uint256;
