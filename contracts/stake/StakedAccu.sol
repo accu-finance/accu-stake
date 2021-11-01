@@ -16,6 +16,7 @@ import {GovernancePowerWithSnapshot} from "../lib/GovernancePowerWithSnapshot.so
 /**
  * @title StakedAccu
  * @notice Contract to stake Accu token, tokenize the position and get rewards, inheriting from a distribution manager contract
+ * @author Aave (modified by Accu)
  **/
 contract StakedAccu is IStakedToken, GovernancePowerWithSnapshot, VersionedInitializable, DistributionManager {
     using SafeMath for uint256;

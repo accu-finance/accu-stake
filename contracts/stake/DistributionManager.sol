@@ -9,6 +9,7 @@ import {IDistributionManager} from "../interfaces/IDistributionManager.sol";
 /**
  * @title DistributionManager
  * @notice Accounting contract to manage multiple staking distributions
+ * @author Aave (modified by Accu)
  **/
 contract DistributionManager is IDistributionManager {
     using SafeMath for uint256;
