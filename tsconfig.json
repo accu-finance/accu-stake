@@ -4,11 +4,11 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "outDir": "dist",
-    "noImplicitAny": false,
-    "resolveJsonModule": true
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist"
   },
-  "include": ["./tasks", "./test", "./test-fork", "./helpers", "./types"],
-  "files": ["hardhat.config.ts",    "node_modules/@hardhat/typechain/src/type-extensions.d.ts",
-  ]
+  "exclude": ["node_modules", "dist", "artifacts", "deployments", "cache"],
+  "include": ["hardhat.config.ts", "**/*.ts", "**/*.js"]
 }

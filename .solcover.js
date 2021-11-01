@@ -1,11 +1,11 @@
-const accounts = require(`./test-wallets.ts`).accounts;
-
 module.exports = {
-  skipFiles: ['open-zeppelin/', 'mocks/', 'stake/StakedTokenV3.sol', 'lib/'],
+  skipFiles: ['open-zeppelin/', 'lib/', 'mocks/'],
   mocha: {
     enableTimeouts: false,
   },
   providerOptions: {
-    accounts,
+    _chainId: 1337,
+    _chainIdRpc: 1337,
+    network_id: 1337,
   },
 };
