@@ -8,7 +8,6 @@ import {SafeMath} from "../open-zeppelin/SafeMath.sol";
 /**
  * @title ERC20WithSnapshot
  * @notice ERC20 including snapshots of balances on transfer-related actions
- * @author Aave
  **/
 contract ERC20WithSnapshot is ERC20 {
     using SafeMath for uint256;
@@ -21,17 +20,17 @@ contract ERC20WithSnapshot is ERC20 {
 
     mapping(address => mapping(uint256 => Snapshot)) public _snapshots;
     mapping(address => uint256) public _countsSnapshots;
-    /// @dev reference to the Aave governance contract to call (if initialized) on _beforeTokenTransfer
-    /// !!! IMPORTANT The Aave governance is considered a trustable contract, being its responsibility
+    /// @dev reference to the governance contract to call (if initialized) on _beforeTokenTransfer
+    /// !!! IMPORTANT The governance is considered a trustable contract, being its responsibility
     /// to control all potential reentrancies by calling back the this contract
-    ITransferHook public _aaveGovernance;
+    ITransferHook public _governance;
 
     event SnapshotDone(address owner, uint128 oldValue, uint128 newValue);
 
     constructor(string memory name, string memory symbol) public ERC20(name, symbol) {}
 
-    function _setAaveGovernance(ITransferHook aaveGovernance) internal virtual {
-        _aaveGovernance = aaveGovernance;
+    function _setGovernance(ITransferHook governance) internal virtual {
+        _governance = governance;
     }
 
     /**
@@ -88,10 +87,10 @@ contract ERC20WithSnapshot is ERC20 {
             _writeSnapshot(to, uint128(toBalance), uint128(toBalance.add(amount)));
         }
 
-        // caching the aave governance address to avoid multiple state loads
-        ITransferHook aaveGovernance = _aaveGovernance;
-        if (aaveGovernance != ITransferHook(0)) {
-            aaveGovernance.onTransfer(from, to, amount);
+        // caching the  governance address to avoid multiple state loads
+        ITransferHook governance = _governance;
+        if (governance != ITransferHook(0)) {
+            governance.onTransfer(from, to, amount);
         }
     }
 }

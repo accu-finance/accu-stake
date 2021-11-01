@@ -9,7 +9,6 @@ import {IDistributionManager} from "../interfaces/IDistributionManager.sol";
 /**
  * @title DistributionManager
  * @notice Accounting contract to manage multiple staking distributions
- * @author Aave
  **/
 contract DistributionManager is IDistributionManager {
     using SafeMath for uint256;
@@ -62,7 +61,7 @@ contract DistributionManager is IDistributionManager {
 
     /**
      * @dev Updates the state of one distribution, mainly rewards index and timestamp
-     * @param underlyingAsset The address used as key in the distribution, for example sAAVE or the aTokens addresses on Aave
+     * @param underlyingAsset The address used as key in the distribution, for example xAccu or the aTokens addresses on Accu
      * @param assetConfig Storage pointer to the distribution's config
      * @param totalStaked Current total of staked assets for this distribution
      * @return The new distribution index

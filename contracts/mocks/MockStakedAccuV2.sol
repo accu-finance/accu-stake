@@ -14,7 +14,8 @@ import {DistributionManager} from "../stake/DistributionManager.sol";
 import {GovernancePowerWithSnapshot} from "../lib/GovernancePowerWithSnapshot.sol";
 
 /**
- * @title MockStakedAccuV2
+ * @title StakedAccu
+ * @notice Contract to stake Accu token, tokenize the position and get rewards, inheriting from a distribution manager contract
  **/
 contract MockStakedAccuV2 is IStakedToken, GovernancePowerWithSnapshot, VersionedInitializable, DistributionManager {
     using SafeMath for uint256;
@@ -73,13 +74,13 @@ contract MockStakedAccuV2 is IStakedToken, GovernancePowerWithSnapshot, Versione
         address emissionManager,
         uint128 distributionDuration,
         address governance
-    ) public ERC20(NAME, SYMBOL) DistributionManager(emissionManager, distributionDuration) {
+    ) ERC20(NAME, SYMBOL) DistributionManager(emissionManager, distributionDuration) {
         STAKED_TOKEN = stakedToken;
         REWARD_TOKEN = rewardToken;
         COOLDOWN_SECONDS = cooldownSeconds;
         UNSTAKE_WINDOW = unstakeWindow;
         REWARDS_VAULT = rewardsVault;
-        _aaveGovernance = ITransferHook(governance);
+        _governance = ITransferHook(governance);
     }
 
     /**
@@ -381,10 +382,10 @@ contract MockStakedAccuV2 is IStakedToken, GovernancePowerWithSnapshot, Versione
 
         _moveDelegatesByType(propPowerFromDelegatee, propPowerToDelegatee, amount, DelegationType.PROPOSITION_POWER);
 
-        // caching the aave governance address to avoid multiple state loads
-        ITransferHook aaveGovernance = _aaveGovernance;
-        if (aaveGovernance != ITransferHook(0)) {
-            aaveGovernance.onTransfer(from, to, amount);
+        // caching the governance address to avoid multiple state loads
+        ITransferHook governance = _governance;
+        if (governance != ITransferHook(0)) {
+            governance.onTransfer(from, to, amount);
         }
     }
 

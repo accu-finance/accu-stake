@@ -14,8 +14,7 @@ import {DistributionManager} from "./DistributionManager.sol";
 
 /**
  * @title IncentivesController
- * @notice Distributor contract for rewards to the Aave protocol
- * @author Aave
+ * @notice Distributor contract for rewards to the Accu protocol
  **/
 contract IncentivesController is IIncentivesController, VersionedInitializable, DistributionManager {
     using SafeMath for uint256;

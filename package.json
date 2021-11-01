@@ -1,10 +1,14 @@
 {
   "name": "@accu-finance/accu-stake",
   "version": "1.0.0",
-  "description": "Safety Module for the Aave Protocol",
+  "description": "Staked Accu Token",
   "files": [
+    "abi",
+    "artifacts",
     "contracts",
-    "artifacts"
+    "deployments",
+    "exports",
+    "types"
   ],
   "scripts": {
     "prepare": "node ./.setup.js && npm run compile",
@@ -13,9 +17,10 @@
     "format": "npx prettier --check \"**/*.{ts,js,sol}\"",
     "format:fix": "npx prettier --write \"**/*.{ts,js,sol}\"",
     "compile": "SKIP_LOAD=true hardhat compile",
-    "compile:force": "npm run compile -- --force",
-    "test": "npx hardhat test",
+    "test": "cross-env TS_NODE_TRANSPILE_ONLY=1 hardhat test",
     "coverage": "npx hardhat coverage --network hardhat",
+    "localhost:node": "npx hardhat node --hostname 0.0.0.0 --no-deploy",
+    "localhost:deploy": "npx hardhat deploy --network localhost --tags testEnv",
     "clean": "rm -rf typechain/ cache/ artifacts/",
     "prepublishOnly": "npm run compile"
   },
@@ -68,21 +73,13 @@
       "pre-commit": "pretty-quick --staged --pattern 'contracts/**/*.sol' --pattern '**/*.{ts,js}'"
     }
   },
-  "author": "Aave",
-  "contributors": [
-    "Ernesto Boado <ernesto@aave.com>",
-    "Emilio Frangella <emilio@aave.com>",
-    "Andrey Kozlov <andrey@aave.com>",
-    "David Racero <david.k@aave.com>"
-  ],
+  "author": "",
+  "contributors": [],
   "license": "AGPL-3.0",
   "dependencies": {},
-  "keywords": [
-    "aave",
-    "stake",
-    "token",
-    "safety",
-    "module",
-    "ethereum"
-  ]
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accu-finance/accu-stake.git"
+  }
 }
