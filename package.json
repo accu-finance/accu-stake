@@ -11,7 +11,7 @@
     "types"
   ],
   "scripts": {
-    "prepare": "node ./.setup.js && npm run compile",
+    "prepare": "node ./.setup.js && npx husky install && npm run compile",
     "lint": "eslint \"**/*.{js,ts}\" && solhint contracts/**/*.sol",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix contracts/**/*.sol",
     "format": "npx prettier --check \"**/*.{ts,js,sol}\"",
